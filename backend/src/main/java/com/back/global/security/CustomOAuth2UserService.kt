@@ -13,6 +13,7 @@ private enum class OAuth2Provider {
     KAKAO, GOOGLE, NAVER;
 
     companion object {
+        // 문자열을 ENUM으로 변환해서 리턴
         fun from(registrationId: String): OAuth2Provider =
             entries.firstOrNull { it.name.equals(registrationId, ignoreCase = true) }
                 ?: error("Unsupported provider: $registrationId")
@@ -24,6 +25,7 @@ class CustomOAuth2UserService(
     private val memberService: MemberService
 ) : DefaultOAuth2UserService() {
 
+    // 콘솔 로그 출력용(sl4j)
     private val logger = LoggerFactory.getLogger(javaClass)
 
     // 카카오톡 로그인이 성공할 때 마다 이 함수가 실행된다.
@@ -34,10 +36,9 @@ class CustomOAuth2UserService(
         val oAuth2User = super.loadUser(userRequest)
         val provider = OAuth2Provider.from(userRequest.clientRegistration.registrationId)
 
+        // 구조분해할당 : when이 리턴하는 객체(Triple)의 첫번째, 두번째, 세번째 값을 oauthUserId, nickname, profileImgUrl에 넣음
         val (oauthUserId, nickname, profileImgUrl) = when (provider) {
             OAuth2Provider.KAKAO -> {
-                val attributes = oAuth2User.getAttributes()
-                val attributesProperties = attributes.get("properties") as MutableMap<String?, Any?>
 
                 val props = (oAuth2User.attributes.getValue("properties") as Map<String, Any>)
                 Triple(
