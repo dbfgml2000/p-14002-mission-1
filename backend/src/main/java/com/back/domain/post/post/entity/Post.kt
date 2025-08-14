@@ -40,11 +40,11 @@ class Post(
     fun deleteComment(postComment: PostComment?): Boolean =
         postComment?.let { comments.remove(it) } ?: false
 
-    fun checkActorCanModify(actor: Member?) {
+    fun checkActorCanModify(actor: Member) {
         if (author != actor) throw ServiceException("403-1", "${id}번 글 수정권한이 없습니다.")
     }
 
-    fun checkActorCanDelete(actor: Member?) {
+    fun checkActorCanDelete(actor: Member) {
         if (author != actor) throw ServiceException("403-2", "${id}번 글 삭제권한이 없습니다.")
     }
 }
