@@ -18,7 +18,7 @@ data class MemberWithUsernameDto(
         modifyDate = member.modifyDate,
         isAdmin = member.isAdmin,
         username = member.username,
-        name = member.name,
+        name = member.nickname,
         profileImageUrl = member.profileImgUrlOrDefault
     )
 }

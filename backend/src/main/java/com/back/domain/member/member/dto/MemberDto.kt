@@ -16,7 +16,7 @@ data class MemberDto(
         createDate = member.createDate,
         modifyDate = member.modifyDate,
         isAdmin = member.isAdmin,
-        name = member.name,
+        name = member.nickname,
         profileImageUrl = member.profileImgUrlOrDefault
     )
 }

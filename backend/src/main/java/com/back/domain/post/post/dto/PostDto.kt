@@ -16,7 +16,7 @@ data class PostDto(
         createDate = post.createDate,
         modifyDate = post.modifyDate,
         authorId = post.author.id,
-        authorName = post.author.name,
+        authorName = post.author.nickname,
         title = post.title
     )
 }

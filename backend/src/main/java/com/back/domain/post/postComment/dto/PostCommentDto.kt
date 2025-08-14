@@ -17,7 +17,7 @@ data class PostCommentDto (
         createDate = postComment.createDate,
         modifyDate = postComment.modifyDate,
         authorId = postComment.author.id,
-        authorName = postComment.author.name,
+        authorName = postComment.author.nickname,
         postId = postComment.post.id,
         content = postComment.content
     )
