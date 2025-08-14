@@ -10,7 +10,7 @@ import jakarta.persistence.FetchType.LAZY
 @Entity
 class Post(
     @ManyToOne(fetch = LAZY)
-    var author: Member,
+    val author: Member,
     var title: String,
     var content: String
 ) : BaseEntity() {
