@@ -24,7 +24,7 @@ public class Member extends BaseEntity {
     private String profileImgUrl;
 
     public Member(int id, String username, String nickname) {
-        setId(id);
+        super(id);
         this.username = username;
         this.nickname = nickname;
     }
